@@ -20,7 +20,7 @@
 
 ## 环境
 
-基础环境的侦测和安装
+基础环境安装
 ```shell script
 [root@i-okjxke92 ~]# cat /etc/redhat-release 
 CentOS Linux release 7.9.2009 (Core)
@@ -102,11 +102,13 @@ error: wasmer was installed, but doesn't seem to be working :(
 
 
 ###  Graalvm Native
+TODO
 
 ### Graalvm
-
+TODO
 
 ### Native
+TODO
 
 ## 具体的语言
 
@@ -119,6 +121,19 @@ error: wasmer was installed, but doesn't seem to be working :(
 2. tinygo https://github.com/tinygo-org/tinygo
 
 ##### Golang 官方
+
+测试代码:
+```
+package main
+
+import (
+	"fmt"
+)
+func main() {
+	fmt.Println("Hello, Go")
+}
+
+```
 
 编译:
 ```shell script
@@ -137,20 +152,20 @@ js/wasm
 ```
 仅支持js平台
 
-用graalvm运行编译的wasm文件
+用graalvm运行编译的wasm文件, 错误
 ```
 [root@acg go]# wasm main.wasm 
 ERROR: No entry-point function found, cannot start program.
 ```
 
-在mac下用wasmer运行编译的wasm文件
+在mac下用wasmer运行编译的wasm文件, 错误
 ```
 ➜  go git:(master) ✗ wasmer main.wasm
 error: failed to run `main.wasm`
 ╰─> 1: Error while importing "go"."debug": unknown import. Expected Function(FunctionType { params: [I32], results: [] })
 ```
 
-在mac下用wasmtime运行编译的wasm文件
+在mac下用wasmtime运行编译的wasm文件, 错误
 ```
 ➜  go git:(master) ✗ wasmtime main.wasm
 Error: failed to run main module `main.wasm`
@@ -172,7 +187,7 @@ Caused by:
 错误：没有任何匹配: tinygo
 ```
 
-在mac下用wasmtime运行用mac的tinygo编译的wasm文件
+在mac下用wasmtime运行用mac的tinygo编译的wasm文件, 错误
 ```
 ➜  go git:(master) ✗ wasmtime tiny.wasm
 Error: failed to run main module `tiny.wasm`
@@ -182,13 +197,13 @@ Caused by:
     1: unknown import: `env::syscall/js.valueGet` has not been defined
 ```
 
-用graalvm运行用mac的tinygo编译的wasm文件
+用graalvm运行用mac的tinygo编译的wasm文件, 错误
 ```
 [root@acg go]# wasm tiny.wasm 
 ERROR: The module 'env', referenced by the import 'syscall/js.valueNew' in the module 'main', does not exist.
 ```
 
-在mac下用wasmer运行用mac的tinygo编译的wasm文件
+在mac下用wasmer运行用mac的tinygo编译的wasm文件, 错误
 ```
 ➜  go git:(master) ✗ wasmer tiny.wasm
 error: failed to run `tiny.wasm`
@@ -198,7 +213,11 @@ error: failed to run `tiny.wasm`
 
 #### 运行结果
 
+1. yum install golang1.15.5 运行时间(纳秒): 1002707570
+2. 官网下载golang1.15.5 运行时间(纳秒): 1002898515
+3. 编译安装golang1.15.5 运行时间(纳秒): 1002841179
 
+(一开始测试的是官网下载golang1.15.6 运行时间(纳秒): 1002665315, 为了和yum版本一致就没用此版本)
 
-
+![](./go/ECharts.png)
 
