@@ -78,7 +78,7 @@ func main() {
 		f57()
 	}
 
-	fmt.Printf("spend %d", time.Now().UnixNano()- startAt)
+	fmt.Print(time.Now().UnixNano()- startAt)
 }
 
 func f1() {
