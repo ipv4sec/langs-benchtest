@@ -226,3 +226,6 @@ yum install java-11-openjdk -y
 
 
 #### 运行结果
+1. yum install jdk11 运行时间(纳秒): 
+2. 官网下载golang1.15.5 运行时间(纳秒): 1002898515
+3. 编译安装golang1.15.5 运行时间(纳秒): 1002841179
