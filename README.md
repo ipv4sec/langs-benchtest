@@ -222,3 +222,7 @@ error: failed to run `tiny.wasm`
 ![](./go/ECharts.png)
 
 ### Java
+yum install java-11-openjdk -y
+
+
+#### 运行结果

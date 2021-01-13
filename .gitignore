@@ -3,3 +3,5 @@
 .DS_Store
 go/dist
 java/dist
+python/dist
+nodejs/dist
