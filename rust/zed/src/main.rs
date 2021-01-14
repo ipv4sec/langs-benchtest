@@ -1,4 +1,7 @@
-fn main() {
+
+use std::time::{SystemTime, UNIX_EPOCH};
+
+fn f0() {
     println!("Hello, Rust");
 }
 
@@ -71,10 +74,10 @@ fn f7() {
 
 fn f8() {
     println!("Hello, world!");
-    another_function();
+    another_function2();
 }
 
-fn another_function() {
+fn another_function2() {
     println!("Hello, runoob!");
 }
 
@@ -266,7 +269,7 @@ fn calculate_length(s: &String) -> usize {
 
 fn f25() {
     let s1 = String::from("hello");
-    let s2 = &s1;
+    let s2 = s1.clone();
     let s3 = s1;
     println!("{}", s2);
 }
@@ -282,7 +285,6 @@ fn f27() {
     let s1 = String::from("run");
     let s2 = &s1;
     println!("{}", s2);
-    s2.push_str("oob"); // 错误，禁止修改租借的值
     println!("{}", s2);
 }
 
@@ -297,14 +299,9 @@ fn f28() {
     println!("{}", s2);
 }
 fn f29() {
-    let reference_to_nothing = dangle();
 }
 
-fn dangle() -> &String {
-    let s = String::from("hello");
 
-    &s
-}
 fn f30() {
     let s = String::from("broadcast");
 
@@ -317,7 +314,6 @@ fn f30() {
 fn f31() {
     let mut s = String::from("runoob");
     let slice = &s[0..3];
-    s.push_str("yes!"); // 错误
     println!("slice = {}", slice);
 }
 
@@ -337,7 +333,7 @@ struct Site {
 }
 
 struct Color(u8, u8, u8);
-struct Point(f64, f64);
+struct Point2(f64, f64);
 
 fn f33() {
     struct Color(u8, u8, u8);
@@ -350,7 +346,7 @@ fn f33() {
     println!("origin = ({}, {})", origin.0, origin.1);
 }
 
-struct Rectangle {
+struct Rectangle2 {
     width: u32,
     height: u32,
 }
@@ -361,22 +357,18 @@ fn f34() {
     println!("rect1 is {:?}", rect1);
 }
 
-struct Rectangle {
+struct Rectangle3 {
     width: u32,
     height: u32,
 }
 
-impl Rectangle {
-    fn area(&self) -> u32 {
-        self.width * self.height
-    }
-}
 
 fn f35() {
     let rect1 = Rectangle { width: 30, height: 50 };
     println!("rect1's area is {}", rect1.area());
 }
 
+#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
@@ -399,7 +391,7 @@ fn f36() {
     println!("{}", rect1.wider(&rect2));
 }
 
-struct Rectangle {
+struct Rectangle4 {
     width: u32,
     height: u32,
 }
@@ -415,6 +407,7 @@ fn f37() {
     println!("{:?}", rect);
 }
 
+#[derive(Debug)]
 enum Book {
     Papery, Electronic
 }
@@ -553,7 +546,7 @@ fn f46() {
     }
 }
 
-fn max(array: &[i32]) -> i32 {
+fn max2(array: &[i32]) -> i32 {
     let mut max_index = 0;
     let mut i = 1;
     while i < array.len() {
@@ -635,6 +628,15 @@ impl Comparable for f64 {
     }
 }
 
+impl Comparable for i8 {
+    fn compare(&self, object: &i8) -> i8 {
+        if &self > &object { 1 }
+        else if &self == &object { 0 }
+        else { -1 }
+    }
+}
+
+
 fn f50() {
     let arr = [1.0, 3.0, 5.0, 4.0, 2.0];
     println!("maximum of arr is {}", max(&arr));
@@ -687,4 +689,139 @@ fn f57() {
     for c in s.chars() {
         println!("{}", c);
     }
+}
+
+fn f58() {
+    let s = String::from("EN中文");
+    let a = s.chars().nth(2);
+    println!("{:?}", a);
+}
+
+fn f59() {
+    let s = String::from("EN中文");
+    let sub = &s[0..2];
+    println!("{}", sub);
+}
+
+fn f60() {
+    let s = String::from("ENEEEEEE");
+    let sub = &s[0..3];
+    println!("{}", sub);
+}
+
+pub struct ClassName {
+    field: i32,
+}
+
+impl ClassName {
+    pub fn new(value: i32) -> ClassName {
+        ClassName {
+            field: value
+        }
+    }
+
+    pub fn public_method(&self) {
+        println!("from public method");
+        self.private_method();
+    }
+
+    fn private_method(&self) {
+        println!("from private method");
+    }
+}
+
+fn f61() {
+    let object = ClassName::new(1024);
+    object.public_method();
+}
+
+fn timestamp1() -> i64 {
+    let start = SystemTime::now();
+    let since_the_epoch = start
+        .duration_since(UNIX_EPOCH)
+        .expect("Time went backwards");
+    let ms = since_the_epoch.as_secs() as i64 * 1000i64 + (since_the_epoch.subsec_nanos() as f64 / 1_000_000.0) as i64;
+    ms
+}
+
+
+fn main() {
+    let ts1 = timestamp1();
+    let mut i = 0;
+    while i < 10000 {
+        i = i+1;
+        f0();
+        f1();
+        f2();
+        f3();
+        f4();
+        f5();
+        f6();
+        f7();
+        f8();
+        f9();
+
+        f10();
+        f11();
+        f12();
+        f13();
+        f14();
+        f15();
+        f16();
+        f17();
+        f18();
+        f19();
+
+        f20();
+        f21();
+        f22();
+        f23();
+        f24();
+        f25();
+        f26();
+        f27();
+        f28();
+        f29();
+
+        f30();
+        f31();
+        f32();
+        f33();
+        f34();
+        f35();
+        f36();
+        f37();
+        f38();
+        f39();
+
+        f40();
+        f41();
+        f42();
+        f43();
+        f44();
+        f45();
+        f46();
+        f47();
+        f48();
+        f49();
+
+
+        f50();
+        f51();
+        f52();
+        f53();
+        f54();
+        f55();
+        f56();
+        f57();
+        f58();
+        f59();
+
+        f60();
+        f61();
+
+    }
+    let ts2 = timestamp1();
+    println!("TimeStamp2: {}", ts2);
+    println!("{:?}", ts2 - ts1);
 }
