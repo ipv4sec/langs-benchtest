@@ -681,3 +681,10 @@ fn f56() {
         *i += 50;
     }
 }
+
+fn f57() {
+    let s = String::from("hello中文");
+    for c in s.chars() {
+        println!("{}", c);
+    }
+}

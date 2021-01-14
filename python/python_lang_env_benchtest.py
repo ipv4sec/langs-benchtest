@@ -542,4 +542,5 @@ if __name__ == "__main__":
         for i in range(n):
             print("%d" % arr[i])
     end = time.time()
-    print(end - start)  # 程序开始到程序结束的运行时间
+    print((end - start)*1000000000000000)
+  # 程序开始到程序结束的运行时间

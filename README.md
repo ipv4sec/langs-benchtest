@@ -308,4 +308,11 @@ yum install zlib-devel -y
 #### 运行结果
 1. yum install jdk11 运行时间(纳秒):  12881111702
 2. graalvm 运行时间(纳秒): 12841016645
-3. graalvm native 运行时间(纳秒): 
+3. graalvm native 运行时间(纳秒): 16193535197
+
+### Python
+
+#### 运行结果
+
+1. native 运行时间(纳秒): 1002707570
+2. graalvm  运行时间(纳秒): 1002898515
