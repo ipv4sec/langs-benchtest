@@ -183,6 +183,11 @@ function main() {
     }
 }
 
-var startAt = new Date().getTime()
+function getNanoSecTime() {
+    var hrTime = process.hrtime();
+    return hrTime[0] * 1000000000 + hrTime[1];
+}
+
+var startAt = getNanoSecTime()
 main()
-console.log(new Date().getTime()-startAt)
+console.log(getNanoSecTime()-startAt)

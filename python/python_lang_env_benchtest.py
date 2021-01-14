@@ -486,7 +486,7 @@ def mergeSort(arr, l, r):
         merge(arr, l, m, r)
 
 if __name__ == "__main__":
-    start = time.time_ns()
+    start = time.time()
     for i in range(0,10000):
         print_helloWorld()
         stringTest()
@@ -541,5 +541,5 @@ if __name__ == "__main__":
         print("排序后的数组")
         for i in range(n):
             print("%d" % arr[i])
-    end = time.time_ns()
+    end = time.time()
     print(end - start)  # 程序开始到程序结束的运行时间
